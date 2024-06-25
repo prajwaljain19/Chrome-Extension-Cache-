@@ -1,3 +1,5 @@
+
+
 {
   "manifest_version": 3,
   "name": "Selective Cache Clearer",
@@ -6,17 +8,16 @@
   "permissions": [
     "browsingData",
     "activeTab",
+    "tabs",  
+    "webNavigation",
     "storage"
   ],
-  "action": {
-    "default_popup": "index.html",
-    "default_icon": {
-      "16": "favicon.ico",
-      "48": "favicon.ico",
-      "128": "favicon.ico"
-    }
-  },
   "background": {
     "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Selective Cache Clearer"
   }
 }
+

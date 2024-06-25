@@ -1,19 +1,16 @@
-
-
-chrome.runtime.onmessage.addListener((message, sender, senderRes) => {
-    if(message.action == 'ClearCache') {
-        const appUrl = message.appUrl;
-        ClearAppCache(appUrl);
+window.chrome.runtime.onMessage.addListener((message) => {
+    if (message.action === 'clearCache') {
+      const appUrl = message.appUrl;
+      clearAppCache(appUrl);
     }
-});  
-
-const ClearAppCache = (appUrl) => {
-    chrome.browsingData.remove({
-        origin: [appUrl]
+  });
+  
+  function clearAppCache(appUrl) {
+    window.chrome.browsingData.remove({
+      origins: [appUrl]
     }, {
-        cache: true,
+      cache: true
     }, () => {
-        console.log(`cache cleared {$appUrl}`);
-    }
-)
-}
+      console.log(`Cache cleared for ${appUrl}`);
+    });
+  }

@@ -1,6 +1,25 @@
 import React from "react";
 import { useState } from "react";
-
+window.chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === 'clearCache') {
+      const appUrl = message.appUrl;
+      clearAppCache(appUrl);
+    }
+  });
+  
+  function clearAppCache(appUrl) {
+    window.chrome.browsingData.remove({
+      origins: [appUrl]
+    }, {
+      cache: true
+    }, () => {
+       if(window.chrome.runtime.lastError) {
+        console.log(`Error clearing cache for ${appUrl}`, window.chrome.runtime.lastError);
+       } else {
+        console.log(`Cache cleared for ${appUrl}`);
+       }
+    });
+  }
 function Popup()  {
 
     const [appUrl,setappUrl] = useState('');

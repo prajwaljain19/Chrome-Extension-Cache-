@@ -1,5 +1,3 @@
-
-
 {
   "manifest_version": 3,
   "name": "Selective Cache Clearer",
@@ -8,7 +6,7 @@
   "permissions": [
     "browsingData",
     "activeTab",
-    "tabs",  
+    "tabs",
     "webNavigation",
     "storage"
   ],
@@ -20,4 +18,3 @@
     "default_title": "Selective Cache Clearer"
   }
 }
-
